@@ -173,13 +173,4 @@ demonstrating technical areas through projects involving programming,
 algorithms, concurrency, networking, object-oriented design, and
 cybersecurity.
 
-## 👤 Author
-
-**Siyathemba Msimang**
-
-Computer Science student focused on software engineering, systems,
-backend development, networking, and continuous technical development.
-
--   GitHub: [Siyathemba-coder](https://github.com/Siyathemba-coder)
--   LinkedIn: [Siyathemba
-    Msimang](https://www.linkedin.com/in/siyathemba-msimang-b5379b391/)
+@Siyathemba Msimang
