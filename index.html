@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Siyathemba Msimang — Aspiring Software Engineer" />
+<title>Siyathemba Msimang · Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<!--<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />  -->
+<style>
+	:root {
+		--bg: #081C3A;
+		--surface: #102B52;
+		--surface2: #163B6E;
+
+		--border: rgba(255,255,255,0.08);
+		--border2: rgba(255,255,255,0.16);
+
+		--accent: #D4AF37;
+		--accent2: #E6C76A;
+		--teal: #F2D675;
+
+		--text: #F5F5F5;
+		--muted: #C8D0DD;
+		--muted2: #8794A8;
+
+		--font-head: 'Syne', sans-serif;
+		--font-body: 'DM Sans', sans-serif;
+		--font-mono: 'DM Mono', monospace;
+
+		--radius: 12px;
+		--radius-lg: 20px;
+	}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,15,0.85); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: var(--font-head); font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 300; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.45rem 1.2rem; border-radius: 50px; text-decoration: none; letter-spacing: 0.06em; transition: all 0.2s; }
+  .nav-cta:hover { background: var(--accent); color: #fff; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; padding: 8rem 3rem 4rem; position: relative; overflow: hidden;
+  }
+  .hero-glow {position: absolute; top: 12%; left: 10%; width: 450px; height: 450px;border-radius: 50%;background: radial-gradient(circle, rgba(212,175,55,0.18) 0%,transparent 75%); filter: blur(60px);}
+  .hero-glow2 {position: absolute; bottom: 8%; right: 8%; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle,rgba(230,199,106,0.10) 0%,transparent 75%); filter: blur(70px);}
+  .hero-left { position: relative; z-index: 1; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--teal); letter-spacing: 0.1em; background: rgba(45,212,191,0.08); border: 1px solid rgba(45,212,191,0.2); padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .hero-name { font-family: var(--font-head); font-size: clamp(3rem, 5.5vw, 5rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.04em; margin-bottom: 1rem; }
+  .hero-name .line2 { color: var(--accent); }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 460px; margin-bottom: 2.5rem; line-height: 1.8; }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: #fff; padding: 0.85rem 2rem; border-radius: 50px; font-family: var(--font-head); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; }
+  .btn-primary:hover {background: #E6C76A;}
+  .btn-secondary { background: transparent; color: var(--text); padding: 0.85rem 2rem; border-radius: 50px; border: 1px solid var(--border2); font-family: var(--font-head); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.25s; cursor: pointer; }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-right { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; }
+  .hero-card { background: var(--surface); border: 1px solid var(--border2); border-radius: var(--radius-lg); padding: 2.5rem; width: 340px; position: relative; overflow: hidden; }
+  .hero-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2), var(--teal)); }
+  .hc-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; color: #fff; margin-bottom: 1.2rem; }
+  .hc-name { font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .hc-role { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 1.5rem; }
+  .hc-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .hc-stat { text-align: center; }
+  .hc-stat-n { font-family: var(--font-head); font-size: 1.4rem; font-weight: 800; color: var(--accent); }
+  .hc-stat-l { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+  .hc-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .badge { font-family: var(--font-mono); font-size: 0.68rem; padding: 0.25rem 0.75rem; border-radius: 50px; border: 1px solid var(--border2); color: var(--muted); background: var(--surface2); }
+
+  /* SECTIONS */
+  section { padding: 6rem 3rem; }
+  .section-label { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 300; color: var(--accent); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 1rem; }
+  .section-title { font-family: var(--font-head); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
+  .section-title em { color: var(--accent2); font-style: normal; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* ABOUT */
+  #about { background: var(--surface); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+  .about-text p { color: var(--muted); line-height: 1.9; margin-bottom: 1.2rem; }
+  .timeline { margin-top: 2rem; }
+  .tl-item { display: flex; gap: 1.2rem; margin-bottom: 1.5rem; }
+  .tl-dot { flex-shrink: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); margin-top: 6px; box-shadow: 0 0 12px rgba(124,106,247,0.6); }
+  .tl-year { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); white-space: nowrap; margin-top: 2px; }
+  .tl-info h4 { font-family: var(--font-head); font-weight: 600; font-size: 0.95rem; margin-bottom: 0.15rem; }
+  .tl-info p { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .skill-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.4rem; transition: border-color 0.2s; }
+  .skill-card:hover { border-color: var(--accent); }
+  .skill-card h4 { font-family: var(--font-head); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.8rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag { font-family: var(--font-mono); font-size: 0.68rem; padding: 0.2rem 0.65rem; border-radius: 4px; background: rgba(124,106,247,0.12); color: var(--accent); border: 1px solid rgba(124,106,247,0.2); }
+
+  /* PROJECTS */
+  #projects { background: var(--bg); }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.25s, border-color 0.25s; }
+  .project-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+  .project-thumb { height: 160px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .project-thumb-icon { font-size: 3rem; position: absolute; }
+  .p1 .project-thumb { background: linear-gradient(135deg, #0f1f2d 0%, #1a3a55 100%); }
+  .p2 .project-thumb { background: linear-gradient(135deg, #1a0f0a 0%, #4d2510 100%); }
+  .p3 .project-thumb { background: linear-gradient(135deg, #0f200f 0%, #1a4a1a 100%); }
+  .p4 .project-thumb { background: linear-gradient(135deg, #1e1040 0%, #2d1b69 100%); }
+  .p5 .project-thumb { background: linear-gradient(135deg, #1a0818 0%, #4d1545 100%); }
+  .p6 .project-thumb { background: linear-gradient(135deg, #0a1a2a 0%, #0f3050 100%); }
+  .p7 .project-thumb { background: linear-gradient(135deg, #1a1000 0%, #4d3000 100%); }
+  .collab-badge {
+    position: absolute; top: 10px; right: 10px;
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.06em;
+    background: rgba(45,212,191,0.15); color: var(--teal);
+    border: 1px solid rgba(45,212,191,0.3); border-radius: 50px;
+    padding: 0.2rem 0.6rem;
+  }
+  .project-body { padding: 1.4rem; }
+  .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+  .project-tag { font-family: var(--font-mono); font-size: 0.62rem; padding: 0.18rem 0.6rem; border-radius: 4px; background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+  .project-title { font-family: var(--font-head); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .project-desc { font-size: 0.81rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
+  .project-links { display: flex; gap: 1rem; }
+  .project-link { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); text-decoration: none; transition: color 0.2s; }
+  .project-link:hover { color: var(--accent2); }
+  
+  .project-highlight {
+  margin-bottom: 1.2rem;
+  padding: 0.7rem 0.8rem;
+  background: rgba(212, 175, 55, 0.06);
+  border-left: 2px solid var(--accent);
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+
+.project-highlight strong {
+  color: var(--accent2);
+  font-weight: 600;
+}
+.project-challenge {
+  margin-bottom: 1.2rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.project-challenge strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+  /* CONTACT */
+  #contact { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-label { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1.2rem; }
+  .contact-heading { font-family: var(--font-head); font-size: clamp(2rem, 3.2vw, 2.6rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.2rem; }
+  .contact-heading em { color: var(--accent); font-style: normal; }
+  .contact-info > p { color: var(--muted); line-height: 1.8; margin-bottom: 2.2rem; max-width: 460px; }
+  .contact-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .contact-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.7rem; padding: 1.8rem 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); text-decoration: none; color: var(--text); transition: border-color 0.2s, transform 0.2s; }
+  .contact-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .contact-card.is-active { border-color: var(--accent); }
+  .card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; background: rgba(212,175,55,0.12); color: var(--accent); }
+  .card-icon.solid { background: var(--accent); color: #0b1830; }
+  .card-label { font-family: var(--font-head); font-size: 0.88rem; font-weight: 700; }
+  .card-sub { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted2); line-height: 1.5; word-break: break-word; }
+  .contact-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2.4rem; }
+  .panel-title { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; }
+  .panel-title .pt-icon { color: var(--accent); display: inline-flex; }
+  .contact-label svg { flex-shrink: 0; }
+  .panel-sub { color: var(--muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.8rem; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-group label { font-family: var(--font-head); font-size: 0.82rem; color: var(--text); font-weight: 600; }
+  .form-group input, .form-group textarea { background: var(--bg); border: 1px solid var(--border2); border-radius: var(--radius); padding: 0.85rem 1rem; color: var(--text); font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: border-color 0.2s; resize: none; }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: var(--muted2); }
+  .form-submit { display: flex; align-items: center; justify-content: center; gap: 0.6rem; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0b1830; border: none; border-radius: 50px; padding: 1rem 2.2rem; font-family: var(--font-head); font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s, transform 0.2s; width: 100%; }
+  .form-submit:hover { opacity: 0.88; transform: translateY(-2px); }
+  .form-success {display: none;}
+  .form-success.show {display: block;}
+  @media (max-width: 600px) { .contact-cards { grid-template-columns: 1fr; } }
+
+  /* FOOTER */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 3rem; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: var(--font-head); font-weight: 800; letter-spacing: -0.02em; }
+  .footer-logo span { color: var(--accent); }
+  .footer-note { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted2); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; }
+    .hero-right { margin-top: 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+  @media (max-width: 1100px) {
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">SM<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Hire Me →</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-left reveal">
+    <div class="hero-tag">Open to opportunities</div>
+    <h1 class="hero-name">
+      Siyathemba<br>
+      <span class="line2">Msimang.</span>
+    </h1>
+    <p class="hero-sub">Software engineer focused on building reliable systems from concurrent, low-level programs to well-structured applications. I care about sound design, clean abstractions, and code that holds up under real conditions.</p>
+	<div class="hero-buttons">
+	  <a class="btn-primary" href="#projects">View My Work</a>
+
+	  <a class="btn-secondary"
+		 href="https://github.com/Siyathemba-coder"
+		 target="_blank"
+		 rel="noopener noreferrer">
+		GitHub ↗
+	  </a>
+
+	  <a class="btn-secondary"
+		 href="https://www.linkedin.com/in/siyathemba-msimang-b5379b391/"
+		 target="_blank"
+		 rel="noopener noreferrer">
+		LinkedIn ↗
+	  </a>
+	</div>
+  </div>
+  <div class="hero-right reveal">
+    <div class="hero-card">
+      <div class="hc-avatar">SM</div>
+      <div class="hc-name">Siyathemba Msimang</div>
+      <div class="hc-role">SOFTWARE ENGINEER</div>
+      <div class="hc-badges">
+        <span class="badge">Java</span>
+        <span class="badge">Python</span>
+        <span class="badge">C#</span>
+        <span class="badge">C++</span>
+        <span class="badge">JavaScript</span>
+        <span class="badge">Systems Design</span>
+      </div>
+      <div class="hc-stats">
+        <div class="hc-stat">
+          <div class="hc-stat-n">7+</div>
+          <div class="hc-stat-l">Projects</div>
+        </div>
+        <div class="hc-stat">
+          <div class="hc-stat-n">5+</div>
+          <div class="hc-stat-l">Languages</div>
+        </div>
+        <div class="hc-stat">
+          <div class="hc-stat-n">∞</div>
+          <div class="hc-stat-l">Curiosity</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">. about me</div>
+        <h2 class="section-title">Engineering software from the <em>ground up</em></h2>
+        <p>
+  I'm a Computer Science student with a strong interest in software engineering,
+  systems, and backend development. I enjoy taking a problem apart, understanding
+  how the pieces fit together, and turning that understanding into software that
+  is structured, maintainable, and reliable.
+</p>
+
+<p>
+  My projects have given me practical experience with object-oriented programming,
+  algorithms, concurrency, networking, and cybersecurity. I've also worked on
+  collaborative projects where version control, communication, and shared
+  responsibility were just as important as writing the code itself.
+</p>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-year">ONGOING</div>
+              <div class="tl-info">
+                <h4>Independent Software Projects</h4>
+                <p> Building practical projects across software engineering, systems programming, networking, and security while continuously developing my technical skills.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-year">2025</div>
+              <div class="tl-info">
+                <h4>Cybersecurity Analyst Path · Self-study</h4>
+                <p>Structured self-study covering networking, threat analysis, security fundamentals, and practical security tooling.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div>
+              <div class="tl-year">ACADEMIC</div>
+              <div class="tl-info">
+                <h4>BSc Computer Science · Undergraduate</h4>
+                <p>Grounding in algorithms, data structures, systems programming, and software engineering principles.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:2rem;">
+         <!--- <a class="btn-secondary" href="#" style="display:inline-block">Download CV →</a> --->
+        </div>
+      </div>
+      <div class="skills-section reveal">
+	<div class="skills-grid">
+
+	  <div class="skill-card">
+		<h4>Languages</h4>
+		<div class="skill-tags">
+		  <span class="skill-tag">Java</span>
+		  <span class="skill-tag">Python</span>
+		  <span class="skill-tag">C++</span>
+		  <span class="skill-tag">C#</span>
+		  <span class="skill-tag">JavaScript</span>
+		</div>
+	  </div>
+
+	  <div class="skill-card">
+		<h4>Software Engineering</h4>
+		<div class="skill-tags">
+		  <span class="skill-tag">OOP</span>
+		  <span class="skill-tag">Data Structures</span>
+		  <span class="skill-tag">Algorithms</span>
+		  <span class="skill-tag">Concurrency</span>
+		  <span class="skill-tag">Multithreading</span>
+		  <span class="skill-tag">System Design</span>
+		</div>
+	  </div>
+
+	  <div class="skill-card">
+		<h4>Systems & Networking</h4>
+		<div class="skill-tags">
+		  <span class="skill-tag">TCP/IP</span>
+		  <span class="skill-tag">Sockets</span>
+		  <span class="skill-tag">Networking</span>
+		  <span class="skill-tag">Threading</span>
+		  <span class="skill-tag">Linux</span>
+		</div>
+	  </div>
+
+	  <div class="skill-card">
+		<h4>Security & Development Tools</h4>
+		<div class="skill-tags">
+		  <span class="skill-tag">Cybersecurity</span>
+		  <span class="skill-tag">Cryptography</span>
+		  <span class="skill-tag">Git</span>
+		  <span class="skill-tag">GitHub</span>
+		  <span class="skill-tag">Agile Collaboration</span>
+		</div>
+	  </div>
+
+</div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">. selected work</div>
+      <h2 class="section-title">Projects I've <em>built</em></h2>
+    </div>
+    <div class="projects-grid">
+
+      <!-- 1 -->
+      <div class="project-card p1 reveal">
+        <div class="project-thumb">
+          <div class="project-thumb-icon">🔍</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Threading</span>
+            <span class="project-tag">Sockets</span>
+            <span class="project-tag">Networking</span>
+          </div>
+          <div class="project-title">Network Scanner</div>
+          <div class="project-desc">A Python-based network discovery and TCP port scanning tool that identifies reachable hosts and open ports across a specified network range. Built with multithreading and sockets to handle multiple network operations concurrently while exploring TCP/IP fundamentals and network analysis.</div>
+		  <div class="project-highlight">
+			  <strong>Engineering focus:</strong>
+			  Concurrent network operations, socket programming, TCP/IP, and efficient task execution.
+			</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/Siyathemba-coder/Network-Scanner-" target="_blank">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="project-card p2 reveal">
+        <div class="project-thumb">
+          <div class="project-thumb-icon">🔐</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Java</span>
+            <span class="project-tag">Cryptography</span>
+            <span class="project-tag">File I/O</span>
+          </div>
+          <div class="project-title">File Encryptor / Decryptor</div>
+          <div class="project-desc">A Java utility for encrypting and decrypting files using symmetric cryptography. The project combines file I/O with cryptographic operations to explore secure data handling, binary file processing, and the practical challenges of protecting sensitive information.</div>
+		  <div class="project-highlight">
+			  <strong>Engineering focus:</strong>
+			  Cryptography, file I/O, data integrity, and secure handling of user data.
+			</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/Siyathemba-coder/FileEncryptorDecryptor" target="_blank">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="project-card p3 reveal">
+        <div class="project-thumb">
+          <div class="project-thumb-icon">📦</div>
+          <div class="collab-badge">Team Project</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">C++</span>
+            <span class="project-tag">Multithreading</span>
+            <span class="project-tag">Concurrency</span>
+          </div>
+          <div class="project-title">Multi-threaded Inventory &amp; Trading System</div>
+          <div class="project-desc"> A thread-safe C++ inventory and trading application that processes customer orders concurrently. Developed as a team project, it required coordinating shared state across multiple threads while maintaining consistent inventory data and dividing responsibilities across a shared codebase.</div>
+		  <div class="project-highlight">
+			  <strong>Engineering focus:</strong>
+			  Thread safety, concurrency, shared state, synchronization, and team-based development.
+			</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/Thoyani-Kati/multi-threaded-real-time-inventory-and-trading-System" target="_blank">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="project-card p4 reveal">
+        <div class="project-thumb">
+          <div class="project-thumb-icon">🚗</div>
+          <div class="collab-badge">Team Project</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">C#</span>
+            <span class="project-tag">OOP</span>
+            <span class="project-tag">Collaboration</span>
+          </div>
+          <div class="project-title">Car Rental System</div>
+          <div class="project-desc"> A collaborative C# application for managing vehicle bookings, customer records, and rental operations. The project applied object-oriented design to model the system's core entities while requiring coordinated development across a shared codebase.</div>
+		  <div class="project-highlight">
+			  <strong>Engineering focus:</strong>
+			  Object-oriented design, domain modelling, collaboration, and shared-codebase development.
+			</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/Siyathemba-coder/Car-Rental-System" target="_blank">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="project-card p5 reveal">
+        <div class="project-thumb">
+          <div class="project-thumb-icon">♟️</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Java</span>
+            <span class="project-tag">Game Logic</span>
+            <span class="project-tag">OOP</span>
+          </div>
+          <div class="project-title">Checkers</div>
+          <div class="project-desc">A Java implementation of the Checkers board game with object-oriented modelling of players, game state, turns, and move validation. The project focuses on translating game rules into structured program logic while keeping responsibilities separated across the application.</div>
+		  <div class="project-highlight">
+			  <strong>Engineering focus:</strong>
+			  OOP, state management, rule validation, algorithms, and program structure.
+			</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/Siyathemba-coder/Checkers" target="_blank">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="project-card p6 reveal">
+        <div class="project-thumb">
+          <div class="project-thumb-icon">🛡️</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">HTML</span>
+            <span class="project-tag">Cybersecurity</span>
+            <span class="project-tag">Self-study</span>
+          </div>
+          <div class="project-title">Cybersecurity Analyst Path</div>
+          <div class="project-desc"> A structured cybersecurity learning portfolio documenting practical study across network security, threat analysis, defensive techniques, and security tooling. The repository demonstrates consistent self-directed learning alongside my formal computer science studies.</div>
+		  <div class="project-highlight">
+			  <strong>Focus:</strong> Networking, security fundamentals, threat analysis, and continuous technical development.
+			</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/Siyathemba-coder/Cybersecurity-Analyst-Path" target="_blank">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="project-card p7 reveal">
+        <div class="project-thumb">
+          <div class="project-thumb-icon">👥</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="project-tag">Java</span>
+            <span class="project-tag">Algorithms</span>
+            <span class="project-tag">MIT License</span>
+          </div>
+          <div class="project-title">Group Selection System</div>
+          <div class="project-desc">A Java application that automates the assignment of individuals into groups according to defined criteria. The project focuses on algorithmic problem solving, input handling, and designing logic that produces consistent group assignments from a set of constraints.</div>
+		  <div class="project-highlight">
+			  <strong>Engineering focus:</strong>
+			  OOP, Algorithms, problem decomposition, input handling, and deterministic program logic.
+			</div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/Siyathemba-coder/Group-Selection-System-" target="_blank">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg> GET IN TOUCH</div>
+        <h2 class="contact-heading">Let's build something<br /><em>amazing together.</em></h2>
+        <div class="contact-info">
+          <p>I'm always open to new opportunities, interesting projects, or just having a chat about technology.</p>
+          <div class="contact-cards">
+            <a class="contact-card" href="mailto:siyathembamsimang20@gmail.com">
+              <div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg></div>
+              <div class="card-label">Email</div>
+              <div class="card-sub">siyathembamsimang20@gmail.com</div>
+            </a>
+            <a class="contact-card is-active" href="https://github.com/Siyathemba-coder" target="_blank" rel="noopener noreferrer">
+              <div class="card-icon solid"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.26 5.7.41.36.78 1.08.78 2.17 0 1.56-.02 2.83-.02 3.22 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"></path></svg></div>
+              <div class="card-label">GitHub</div>
+              <div class="card-sub">@Siyathemba-coder</div>
+            </a>
+            <a class="contact-card" href="https://www.linkedin.com/in/siyathemba-msimang-b5379b391/" target="_blank" rel="noopener noreferrer">
+              <div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.48v6.26ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45Z"></path></svg></div>
+              <div class="card-label">LinkedIn</div>
+              <div class="card-sub">Siyathemba Msimang</div>
+            </a>
+          </div>
+        </div>
+      </div>
+ <div class="reveal">
+  <div class="contact-panel">
+
+    <div class="panel-title">
+      <span class="pt-icon">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path>
+        </svg>
+      </span>
+
+      Send a Message
+    </div>
+
+    <p class="panel-sub"> Fill out the form below and I'll get back to you as soon as possible.</p>
+    <form
+      id="contact-form"
+      action="https://formspree.io/f/mjgnzvqk"
+      method="POST">
+
+      <!-- Name -->
+      <div class="form-group">
+        <label for="contact-name">Your Name</label>
+        <input type="text" id="contact-name" name="name" placeholder="Your name" autocomplete="name"required />
+      </div>
+      <!-- Email -->
+      <div class="form-group">
+        <label for="contact-email">Your Email</label>
+        <input type="email" id="contact-email" name="email" placeholder="Your email" autocomplete="email" required />
+      </div>
+      <!-- Subject -->
+      <div class="form-group">
+        <label for="contact-subject">Subject</label>
+        <input type="text" id="contact-subject" name="subject" placeholder="Subject" />
+      </div>
+      <!-- Message -->
+      <div class="form-group">
+        <label for="contact-message">Message</label>
+        <textarea id="contact-message" name="message" rows="5" placeholder="Your message" required></textarea>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="form-submit">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round">
+
+          <path d="m22 2-7 20-4-9-9-4Z"></path>
+          <path d="M22 2 11 13"></path>
+
+        </svg>
+
+        Send Message
+
+      </button>
+
+
+      <!-- Success message -->
+      <div class="form-success" id="success-msg">
+        Message sent! I'll get back to you as soon as possible.
+      </div>
+
+    </form>
+
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">SM<span>.</span></div>
+  <div class="footer-note">© 2026 Siyathemba Msimang · Software Engineer</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  window.addEventListener('load', () => {
+    document.querySelectorAll('#hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 200);
+    });
+  });
+const contactForm = document.getElementById("contact-form");
+const successMsg = document.getElementById("success-msg");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const submitButton = contactForm.querySelector(".form-submit");
+    const originalButtonText = submitButton.innerHTML;
+
+    submitButton.disabled = true;
+    submitButton.innerHTML = "Sending...";
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (response.ok) {
+        contactForm.reset();
+
+        successMsg.textContent =
+          "✓ Message sent! I'll get back to you as soon as possible.";
+
+        successMsg.classList.add("show");
+
+        setTimeout(() => {
+          successMsg.classList.remove("show");
+        }, 5000);
+      } else {
+        successMsg.textContent =
+          "Something went wrong. Please try again.";
+
+        successMsg.classList.add("show");
+      }
+
+    } catch (error) {
+      successMsg.textContent =
+        "Unable to send the message. Please try again.";
+
+      successMsg.classList.add("show");
+
+    } finally {
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalButtonText;
+    }
+  });
+}
+</script>
+</body>
+</html>
